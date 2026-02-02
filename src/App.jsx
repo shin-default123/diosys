@@ -3,12 +3,12 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import MainLayout from './layouts/MainLayout';
 import Home from './pages/Home';
 import Schools from './pages/Schools';
+import Parish from './pages/Parish';
 
-// CHANGE THE PLACEHOLDERS TO LARAVEL DATA!!!!!!!!!!!
 const Placeholder = ({ title }) => (
-  <div style={{ padding: '50px', textAlign: 'center' }}>
+  <div style={{ background: 'white', padding: '50px', borderRadius: '8px', textAlign: 'center', height: '100%' }}>
     <h1 style={{ color: '#1b5e20' }}>{title} Page</h1>
-    <p>Coming Soon...</p>
+    <p>Content coming soon...</p>
   </div>
 );
 
@@ -21,7 +21,7 @@ const App = () => {
           <Route index element={<Home />} />
           <Route path="schools" element={<Schools />} />
           
-          <Route path="parish" element={<Placeholder title="Parish" />} />
+          <Route path="parish" element={<Parish />} />
           <Route path="booking" element={<Placeholder title="Booking" />} />
           <Route path="faqs" element={<Placeholder title="FAQs" />} />
           
