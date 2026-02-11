@@ -64,7 +64,7 @@ const MainLayout = () => {
           <img src="/diosys.png" alt="logo" style={{ height: '50px', borderRadius: '50%' }} />
           <div style={{ lineHeight: '1.2' }}>
             <img src="/text.png" alt="DIOSYS Text" style={{ height: '20px'}} />
-            {!isMobile && <div style={{ color: 'white', fontSize: '10px' }}>{settings.parish_name || 'Diocesan Integrated Operations System'}</div>}
+            {!isMobile && <div style={{ color: 'white', fontSize: '10px' }}>Diocesan Integrated Operations System</div>}
           </div>
         </div>
 

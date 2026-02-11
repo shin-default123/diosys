@@ -5,7 +5,7 @@ const SettingsContext = createContext();
 
 export const SettingsProvider = ({ children }) => {
   const [settings, setSettings] = useState({
-    parish_name: 'Diocese of Butuan', 
+    parish_name: 'Diocesan Integrated Operations System', 
     maintenance_mode: false,
     theme_color: 'light',
     contact_number: '',

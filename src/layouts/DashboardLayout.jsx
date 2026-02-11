@@ -148,7 +148,7 @@ const DashboardLayout = () => {
                         <List.Item style={{ padding: '10px', background: item.is_read ? '#fff' : '#f6ffed', cursor: 'default' }}>
                             <List.Item.Meta
                                 title={<span style={{ fontSize: '12px', fontWeight: item.is_read ? 'normal' : 'bold' }}>{item.title}</span>}
-                                description={<div style={{ fontSize: '11px', color: '#666', lineHeight: '1.2' }}>{item.message}</div>}
+                                description={<div style={{ fontSize: '11px', color: '#667', lineHeight: '1.2' }}>{item.message}</div>}
                             />
                         </List.Item>
                     )}
@@ -231,7 +231,7 @@ const DashboardLayout = () => {
 
         <Menu 
           theme="dark" 
-          mode="inline" 
+          mode="inline"
           defaultSelectedKeys={['/admin/dashboard']} 
           selectedKeys={[location.pathname]}
           items={items}
