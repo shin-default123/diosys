@@ -1,21 +1,32 @@
-import React from 'react';
-import { Card, List, Typography } from 'antd';
+import React, { useEffect, useState } from 'react';
+import { Card, List, Spin } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
-
-const parishData = [
-  "Buenavista: St. James the Great Parish",
-  "Cabadbaran City: Virgen de la Candelaria Parish",
-  "Carmen: Our Lady of Mount Carmel Parish",
-  "Jabonga: Our Lady of Assumption Parish, Sts. Peter and Paul Mission Station (Baleguian)",
-  "Kitcharao: Immaculate Heart of Mary Parish",
-  "Nasipit: St. Michael the Archangel Parish (Kinabjangan)",
-  "Kitcharao: Immaculate Heart of Mary Parish",
-  "Nasipit: St. Michael the Archangel Parish (Kinabjangan)",
-  "Santiago: St. James the Great Parish",
-  "Las Nieves: Church of Our Lady of Snows "
-];
+import api from '../api'; 
 
 const Parish = () => {
+  const [parishes, setParishes] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchParishes = async () => {
+      try {
+        const response = await api.get('/parishes');
+        setParishes(response.data);
+      } catch (error) {
+        console.error("Error fetching parishes:", error);
+        setParishes([
+            { name: "Buenavista: St. James the Great Parish" },
+            { name: "Cabadbaran City: Virgen de la Candelaria Parish" },
+            { name: "Carmen: Our Lady of Mount Carmel Parish" }
+        ]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchParishes();
+  }, []);
+
   return (
     <Card 
         bordered={false} 
@@ -32,24 +43,34 @@ const Parish = () => {
             padding: '15px 25px'
         }}
         bodyStyle={{ padding: '0' }}
-        title={<span style={{ color: 'white', fontWeight: 'bold', letterSpacing: '0.5px' }}>PARISH</span>}
+        title={<span style={{ color: 'white', fontWeight: 'bold', letterSpacing: '0.5px' }}>PARISHES</span>}
         extra={<DownOutlined style={{ color: 'white', fontSize: '14px' }} />}
       >
-        <List
-            size="large"
-            dataSource={parishData}
-            renderItem={(item) => (
-                <List.Item style={{ 
-                    padding: '15px 25px', 
-                    borderBottom: '1px solid #f0f0f0',
-                    cursor: 'pointer',
-                    transition: 'background 0.3s'
-                }}
-                >
-                    <span style={{ fontSize: '15px', color: '#333' }}>{item}</span>
-                </List.Item>
-            )}
-        />
+        {loading ? (
+            <div style={{ textAlign: 'center', padding: '20px' }}><Spin /></div>
+        ) : (
+            <List
+                size="large"
+                dataSource={parishes}
+                renderItem={(item) => (
+                    <List.Item style={{ 
+                        padding: '15px 25px', 
+                        borderBottom: '1px solid #f0f0f0',
+                        cursor: 'pointer',
+                        transition: 'background 0.3s'
+                    }}
+                    >
+                        <span style={{ fontSize: '15px', color: '#333' }}>{item.name}</span>
+                        
+                        {item.priest && (
+                            <div style={{ fontSize: '12px', color: '#888', marginTop: '2px' }}>
+                                Priest: {item.priest}
+                            </div>
+                        )}
+                    </List.Item>
+                )}
+            />
+        )}
     </Card>
   );
 };
