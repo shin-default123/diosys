@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, Input, Select, Button, Table, Card, Typography, Row, Col, Alert, Empty, Divider } from 'antd';
+import { Form, Input, Select, Button, Table, Card, Typography, Row, Col, Empty, Divider } from 'antd';
 import { SearchOutlined, FileSearchOutlined, CheckCircleOutlined, UserOutlined, EnvironmentOutlined, CalendarOutlined } from '@ant-design/icons';
 import api from '../api';
 
@@ -68,13 +68,6 @@ const RecordSearch = () => {
         <Paragraph>
             Securely verify if your Baptismal, Confirmation, or Marriage record is available in our archives.
         </Paragraph>
-        <Alert 
-            message="Search Requirements" 
-            description="To protect data privacy, you must provide the exact Year and Last Name(s) of the individuals involved." 
-            type="info" 
-            showIcon 
-            style={{ maxWidth: '600px', margin: '0 auto', textAlign: 'left' }}
-        />
       </div>
 
       <Card bordered={false} style={{ boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }}>
