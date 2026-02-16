@@ -16,10 +16,10 @@ const Home = () => {
         setSchedules(response.data);
       } catch (error) {
         console.error("Error fetching schedules:", error);
-        setSchedules([
+    {/*    setSchedules([
             { id: 1, type: 'Matrimony', date: '2026-03-18', place: 'St. Joseph Cathedral', priest: 'Fr. Michael Carter' },
             { id: 2, type: 'Baptism', date: '2026-04-10', place: 'St. Joseph Cathedral', priest: 'Fr. John Doe' }
-        ]);
+        ]);*/}
       } finally {
         setLoading(false);
       }
